@@ -74,7 +74,7 @@ const signin = async (req, res) => {
         if (!matchpassword) {
             return res.status(404).json({ message: "Invalid credentials" })
         }
-        // Set the token expiration to 1 hour (3600 seconds)
+        // Set the token expiration to 1 day 
         const expirationTime = new Date();
         expirationTime.setDate(expirationTime.getDate() + 1);
         const token = jwt.sign({ email: existinguser.email, id: existinguser._id,exp: expirationTime.getTime() / 1000 }, SECRET_KEY, )
